@@ -24,23 +24,16 @@ import {
 import {
   Search as SearchIconMUI,
   FilterList as FilterIcon,
-  Sort as SortIcon,
   Visibility as VisibilityIcon,
   Edit as EditIcon,
-  Delete as DeleteIcon,
-  Work as WorkIcon,
   LocationOn as LocationIcon,
   AttachMoney as MoneyIcon,
-  AccessTime as TimeIcon,
-  People as PeopleIcon,
 } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import ResponsiveLayout from '../components/ResponsiveLayout';
 import type { RootState } from '../store';
 
 const MyJobs: React.FC = () => {
-  const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { } = useSelector((state: RootState) => state.auth);

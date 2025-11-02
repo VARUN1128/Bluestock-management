@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   Box,
-  Typography,
   Card,
   CardContent,
   TextField,
@@ -13,8 +12,6 @@ import {
   InputAdornment,
   InputLabel,
   Button,
-  useMediaQuery,
-  useTheme,
 } from '@mui/material';
 import {
   LocationOn as LocationIcon,
@@ -27,8 +24,6 @@ import type { RootState } from '../store';
 
 const PostJob: React.FC = () => {
   const navigate = useNavigate();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { } = useSelector((state: RootState) => state.auth);
   const [jobType, setJobType] = useState('full-time');
   const [experienceLevel, setExperienceLevel] = useState('mid-level');

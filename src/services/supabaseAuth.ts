@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
-import type { User } from '@supabase/supabase-js';
-import type { RegisterData, LoginCredentials } from '../types/auth';
+import type { User as SupabaseUser } from '@supabase/supabase-js';
+import type { RegisterData, LoginCredentials, User } from '../types/auth';
 
 // Supabase configuration
 const supabaseUrl = 'https://dyoptxxcabypmvnovawc.supabase.co';
@@ -21,6 +21,9 @@ export interface AuthUser {
   created_at: string;
   updated_at: string;
 }
+
+// Re-export User type for convenience
+export type { User };
 
 export const supabaseAuth = {
   // Sign up with email and password
@@ -83,7 +86,7 @@ export const supabaseAuth = {
   },
 
   // Get current user
-  getCurrentUser: async (): Promise<User | null> => {
+  getCurrentUser: async (): Promise<SupabaseUser | null> => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
       return user;
@@ -114,6 +117,8 @@ export const supabaseAuth = {
     full_name?: string;
     gender?: string;
     mobile_no?: string;
+    is_mobile_verified?: boolean;
+    is_email_verified?: boolean;
   }) => {
     try {
       const { data, error } = await supabase.auth.updateUser({
@@ -132,7 +137,7 @@ export const supabaseAuth = {
   },
 
   // Convert Supabase user to app user format
-  convertToAppUser: (supabaseUser: User): AuthUser => {
+  convertToAppUser: (supabaseUser: SupabaseUser): User => {
     const userData = supabaseUser.user_metadata || {};
     
     return {

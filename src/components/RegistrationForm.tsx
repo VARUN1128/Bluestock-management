@@ -7,10 +7,6 @@ import {
   Button,
   Typography,
   Link,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   FormControlLabel,
   Checkbox,
   ToggleButton,
@@ -25,7 +21,6 @@ import {
   Lock as LockIcon,
   Person as PersonIcon,
   Phone as PhoneIcon,
-  Flag as FlagIcon,
 } from '@mui/icons-material';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -159,53 +154,28 @@ const RegistrationForm: React.FC = () => {
                   sx={{ mb: 2 }}
                 />
 
-                <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
-                  <FormControl sx={{ minWidth: 120 }}>
-                    <InputLabel>Country</InputLabel>
-                    <Controller
-                      name="country_code"
-                      control={control}
-                      defaultValue="+91"
-                      render={({ field }) => (
-                        <Select {...field} label="Country">
-                          <MenuItem value="+91">
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                              <FlagIcon sx={{ fontSize: 20 }} />
-                              <Typography>IN (+91)</Typography>
-                            </Box>
-                          </MenuItem>
-                          <MenuItem value="+1">
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                              <FlagIcon sx={{ fontSize: 20 }} />
-                              <Typography>US (+1)</Typography>
-                            </Box>
-                          </MenuItem>
-                        </Select>
-                      )}
-                    />
-                  </FormControl>
-                  <TextField
-                    fullWidth
-                    label="Mobile No"
-                    type="tel"
-                    {...register('mobile_no', {
-                      required: 'Mobile number is required',
-                      pattern: {
-                        value: /^[0-9]{10}$/,
-                        message: 'Please enter a valid 10-digit mobile number',
-                      },
-                    })}
-                    error={!!errors.mobile_no}
-                    helperText={errors.mobile_no?.message}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <PhoneIcon color="action" />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                </Box>
+                <TextField
+                  fullWidth
+                  label="Mobile No"
+                  type="tel"
+                  {...register('mobile_no', {
+                    required: 'Mobile number is required',
+                    pattern: {
+                      value: /^[0-9]{10}$/,
+                      message: 'Please enter a valid 10-digit mobile number',
+                    },
+                  })}
+                  error={!!errors.mobile_no}
+                  helperText={errors.mobile_no?.message}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <PhoneIcon color="action" />
+                      </InputAdornment>
+                    ),
+                  }}
+                  sx={{ mb: 2 }}
+                />
 
                 <TextField
                   fullWidth

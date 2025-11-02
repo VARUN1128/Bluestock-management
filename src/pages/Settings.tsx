@@ -9,8 +9,6 @@ import {
   Tab,
   FormControlLabel,
   Checkbox,
-  Radio,
-  RadioGroup,
   Button,
   useMediaQuery,
   useTheme,
@@ -22,13 +20,12 @@ import {
   Divider,
 } from '@mui/material';
 import {
-  Edit as EditIcon,
   Save as SaveIcon,
   Delete as DeleteIcon,
   Add as AddIcon,
   Remove as RemoveIcon,
 } from '@mui/icons-material';
-import { useForm, Controller, useFieldArray } from 'react-hook-form';
+import { useForm, useFieldArray } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ResponsiveLayout from '../components/ResponsiveLayout';
@@ -36,7 +33,6 @@ import type { RootState } from '../store';
 import {
   updateProfileStart,
   updateProfileSuccess,
-  updateProfileFailure,
 } from '../store/slices/companySlice';
 
 const Settings: React.FC = () => {
@@ -47,7 +43,7 @@ const Settings: React.FC = () => {
   const { } = useSelector((state: RootState) => state.auth);
   const [activeTab, setActiveTab] = useState(0);
 
-  const { control, handleSubmit, register, formState: { errors }, watch } = useForm({
+  const { control, handleSubmit, register, formState: { errors } } = useForm({
     defaultValues: {
       company_name: 'TechCorp Inc.',
       industry: 'Technology',
@@ -62,6 +58,10 @@ const Settings: React.FC = () => {
       founded_year: '2015',
       team_size: '50-100',
       description: 'We are a leading technology company specializing in innovative solutions.',
+      vision: '',
+      currentPassword: '',
+      password: '',
+      confirmPassword: '',
       social_links: [
         { platform: 'LinkedIn', url: 'https://linkedin.com/company/techcorp' },
         { platform: 'Twitter', url: 'https://twitter.com/techcorp' },
@@ -82,7 +82,7 @@ const Settings: React.FC = () => {
     }, 1000);
   };
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
   };
 
@@ -119,7 +119,7 @@ const Settings: React.FC = () => {
                 </Typography>
 
                 <Grid container spacing={3}>
-                  <Grid item xs={12} sm={6}>
+                  <Grid size={{ xs: 12, sm: 6 }}>
                     <TextField
                       fullWidth
                       label="Company Name"
@@ -128,7 +128,7 @@ const Settings: React.FC = () => {
                       helperText={errors.company_name?.message}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid size={{ xs: 12, sm: 6 }}>
                     <FormControl fullWidth error={!!errors.industry}>
                       <InputLabel>Industry</InputLabel>
                       <Select
@@ -143,7 +143,7 @@ const Settings: React.FC = () => {
                       </Select>
                     </FormControl>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid size={{ xs: 12, sm: 6 }}>
                     <TextField
                       fullWidth
                       label="Website"
@@ -152,7 +152,7 @@ const Settings: React.FC = () => {
                       helperText={errors.website?.message}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid size={{ xs: 12, sm: 6 }}>
                     <TextField
                       fullWidth
                       label="Founded Year"
@@ -161,7 +161,7 @@ const Settings: React.FC = () => {
                       helperText={errors.founded_year?.message}
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid size={{ xs: 12 }}>
                     <TextField
                       fullWidth
                       label="Company Description"
@@ -184,7 +184,7 @@ const Settings: React.FC = () => {
                 </Typography>
 
                 <Grid container spacing={3}>
-                  <Grid item xs={12} sm={6}>
+                  <Grid size={{ xs: 12, sm: 6 }}>
                     <FormControl fullWidth error={!!errors.team_size}>
                       <InputLabel>Team Size</InputLabel>
                       <Select
@@ -199,7 +199,7 @@ const Settings: React.FC = () => {
                       </Select>
                     </FormControl>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid size={{ xs: 12, sm: 6 }}>
                     <TextField
                       fullWidth
                       label="Founded Year"
@@ -208,7 +208,7 @@ const Settings: React.FC = () => {
                       helperText={errors.founded_year?.message}
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid size={{ xs: 12 }}>
                     <TextField
                       fullWidth
                       label="Company Vision"
@@ -244,7 +244,7 @@ const Settings: React.FC = () => {
                   {fields.map((field, index) => (
                     <Card key={field.id} variant="outlined" sx={{ p: 2 }}>
                       <Grid container spacing={2} alignItems="center">
-                        <Grid item xs={12} sm={4}>
+                        <Grid size={{ xs: 12, sm: 4 }}>
                           <FormControl fullWidth>
                             <InputLabel>Platform</InputLabel>
                             <Select
@@ -259,7 +259,7 @@ const Settings: React.FC = () => {
                             </Select>
                           </FormControl>
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <Grid size={{ xs: 12, sm: 6 }}>
                           <TextField
                             fullWidth
                             label="URL"
@@ -268,7 +268,7 @@ const Settings: React.FC = () => {
                             helperText={errors.social_links?.[index]?.url?.message}
                           />
                         </Grid>
-                        <Grid item xs={12} sm={2}>
+                        <Grid size={{ xs: 12, sm: 2 }}>
                           <Button
                             variant="outlined"
                             color="error"
@@ -295,7 +295,7 @@ const Settings: React.FC = () => {
                     Contact Information
                   </Typography>
                   <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <TextField
                         fullWidth
                         label="Phone Number"
@@ -304,7 +304,7 @@ const Settings: React.FC = () => {
                         helperText={errors.phone?.message}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <TextField
                         fullWidth
                         label="Email Address"
@@ -314,7 +314,7 @@ const Settings: React.FC = () => {
                         helperText={errors.email?.message}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <TextField
                         fullWidth
                         label="Address"
@@ -323,7 +323,7 @@ const Settings: React.FC = () => {
                         helperText={errors.address?.message}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <TextField
                         fullWidth
                         label="City"
@@ -332,7 +332,7 @@ const Settings: React.FC = () => {
                         helperText={errors.city?.message}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <TextField
                         fullWidth
                         label="State"
@@ -341,7 +341,7 @@ const Settings: React.FC = () => {
                         helperText={errors.state?.message}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <TextField
                         fullWidth
                         label="Postal Code"
@@ -361,7 +361,7 @@ const Settings: React.FC = () => {
                     Change Password
                   </Typography>
                   <Grid container spacing={3}>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 12 }}>
                       <TextField
                         fullWidth
                         label="Current Password"
@@ -371,7 +371,7 @@ const Settings: React.FC = () => {
                         helperText={errors.currentPassword?.message}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <TextField
                         fullWidth
                         label="New Password"
@@ -381,7 +381,7 @@ const Settings: React.FC = () => {
                         helperText={errors.password?.message}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, sm: 6 }}>
                       <TextField
                         fullWidth
                         label="Confirm New Password"

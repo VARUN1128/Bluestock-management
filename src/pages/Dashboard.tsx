@@ -35,7 +35,7 @@ const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useSelector((state: RootState) => state.auth);
-  const { profile, isLoading } = useSelector((state: RootState) => state.company);
+  const { profile } = useSelector((state: RootState) => state.company);
   
   const [currentStep, setCurrentStep] = useState(1);
   const [showVerificationModal, setShowVerificationModal] = useState(false);

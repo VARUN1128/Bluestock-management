@@ -13,12 +13,9 @@ import {
   InputAdornment,
   InputLabel,
   Chip,
-  Rating,
   Slider,
   FormControlLabel,
   Checkbox,
-  useMediaQuery,
-  useTheme,
 } from '@mui/material';
 import {
   Person as PersonIcon,
@@ -32,14 +29,10 @@ import {
   Visibility as VisibilityIcon,
 } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import ResponsiveLayout from '../components/ResponsiveLayout';
 import type { RootState } from '../store';
 
 const FindCandidates: React.FC = () => {
-  const navigate = useNavigate();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { } = useSelector((state: RootState) => state.auth);
   const [filterExperience, setFilterExperience] = useState('all');
   const [filterLocation, setFilterLocation] = useState('all');

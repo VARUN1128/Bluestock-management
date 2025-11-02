@@ -13,8 +13,6 @@ import {
   InputAdornment,
   InputLabel,
   Chip,
-  useMediaQuery,
-  useTheme,
 } from '@mui/material';
 import {
   Business as BusinessIcon,
@@ -26,14 +24,10 @@ import {
   Work as WorkIcon,
 } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import ResponsiveLayout from '../components/ResponsiveLayout';
 import type { RootState } from '../store';
 
 const AllCompanies: React.FC = () => {
-  const navigate = useNavigate();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { } = useSelector((state: RootState) => state.auth);
   const [filterIndustry, setFilterIndustry] = useState('all');
 

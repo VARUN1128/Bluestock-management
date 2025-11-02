@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { registerSuccess, registerFailure } from '../store/slices/authSlice';
+import { registerStart, registerSuccess, registerFailure } from '../store/slices/authSlice';
 import FormStep from '../components/FormStep';
 import CompanyInfoStep from '../components/CompanyInfoStep';
 import FoundingInfoStep from '../components/FoundingInfoStep';

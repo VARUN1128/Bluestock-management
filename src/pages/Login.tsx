@@ -22,7 +22,7 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { loginStart, loginSuccess, loginFailure } from '../store/slices/authSlice';
 import { supabaseAuth } from '../services/supabaseAuth';
-import type { LoginCredentials } from '../types/auth.js';
+import type { LoginCredentials } from '../types/auth';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();

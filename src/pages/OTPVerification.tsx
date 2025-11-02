@@ -9,21 +9,12 @@ import {
   Link,
   Alert,
   AlertTitle,
-  InputAdornment,
   IconButton,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
 } from '@mui/material';
 import {
-  Email as EmailIcon,
   Sms as SmsIcon,
-  Visibility,
-  VisibilityOff,
   Close as CloseIcon,
   CheckCircle as CheckCircleIcon,
-  Error as ErrorIcon,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -43,7 +34,6 @@ const OTPVerification: React.FC = () => {
 
   // Get user data from location state
   const userData = location.state?.userData;
-  const userId = location.state?.userId;
   const session = location.state?.session;
 
   // Fallback data if no user data is provided
@@ -210,7 +200,9 @@ const OTPVerification: React.FC = () => {
               {otp.map((digit, index) => (
                 <TextField
                   key={index}
-                  ref={(el) => (inputRefs.current[index] = el)}
+                  ref={(el: HTMLInputElement | null) => {
+                    inputRefs.current[index] = el;
+                  }}
                   value={digit}
                   onChange={(e) => handleOtpChange(index, e.target.value)}
                   onKeyDown={(e) => handleKeyDown(index, e)}

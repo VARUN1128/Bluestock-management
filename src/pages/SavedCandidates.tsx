@@ -14,28 +14,18 @@ import {
   InputAdornment,
   Rating,
   InputLabel,
-  useMediaQuery,
-  useTheme,
 } from '@mui/material';
 import {
   Person as PersonIcon,
   LocationOn as LocationIcon,
   Search as SearchIconMUI,
-  FilterList as FilterIcon,
-  Sort as SortIcon,
   AttachMoney as MoneyIcon,
-  Work as WorkIcon,
-  Star as StarIcon,
 } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import ResponsiveLayout from '../components/ResponsiveLayout';
 import type { RootState } from '../store';
 
 const SavedCandidates: React.FC = () => {
-  const navigate = useNavigate();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { } = useSelector((state: RootState) => state.auth);
   const [filterExperience, setFilterExperience] = useState('all');
 

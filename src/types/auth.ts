@@ -25,7 +25,7 @@ export interface AuthResponse {
 
 // User types
 export interface User {
-  id: number;
+  id: string | number;
   email: string;
   full_name: string;
   signup_type: 'e';

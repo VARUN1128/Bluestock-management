@@ -56,7 +56,7 @@ export const createUser = async (userData: Omit<UserData, 'id' | 'created_at' | 
     return { success: true, id: docRef.id };
   } catch (error) {
     console.error('Error creating user:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' };
   }
 };
 
@@ -72,7 +72,7 @@ export const getUserById = async (userId: string) => {
     }
   } catch (error) {
     console.error('Error getting user:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' };
   }
 };
 
@@ -89,7 +89,7 @@ export const getUserByEmail = async (email: string) => {
     }
   } catch (error) {
     console.error('Error getting user by email:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' };
   }
 };
 
@@ -103,7 +103,7 @@ export const updateUser = async (userId: string, updates: Partial<UserData>) => 
     return { success: true };
   } catch (error) {
     console.error('Error updating user:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' };
   }
 };
 
@@ -118,7 +118,7 @@ export const createCompanyProfile = async (companyData: Omit<CompanyProfile, 'id
     return { success: true, id: docRef.id };
   } catch (error) {
     console.error('Error creating company profile:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' };
   }
 };
 
@@ -135,7 +135,7 @@ export const getCompanyProfileByOwner = async (ownerId: string) => {
     }
   } catch (error) {
     console.error('Error getting company profile:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' };
   }
 };
 
@@ -152,7 +152,7 @@ export const getAllCompanies = async () => {
     return { success: true, companies };
   } catch (error) {
     console.error('Error getting all companies:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' };
   }
 };
 
@@ -166,7 +166,7 @@ export const updateCompanyProfile = async (companyId: string, updates: Partial<C
     return { success: true };
   } catch (error) {
     console.error('Error updating company profile:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' };
   }
 };
 
@@ -177,6 +177,6 @@ export const deleteCompanyProfile = async (companyId: string) => {
     return { success: true };
   } catch (error) {
     console.error('Error deleting company profile:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error occurred' };
   }
 };

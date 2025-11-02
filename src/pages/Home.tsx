@@ -240,14 +240,14 @@ const Home: React.FC = () => {
         {loading ? (
           // Show loading skeletons
           Array.from({ length: 4 }).map((_, index) => (
-            <Grid item xs={6} sm={6} lg={3} key={index}>
+            <Grid size={{ xs: 6, sm: 6, lg: 3 }} key={index}>
               <StatsCardSkeleton />
             </Grid>
           ))
         ) : (
           // Show actual data
           jobStats.map((stat, index) => (
-            <Grid item xs={6} sm={6} lg={3} key={index}>
+            <Grid size={{ xs: 6, sm: 6, lg: 3 }} key={index}>
               <Card 
                 elevation={2} 
                 sx={{ 
@@ -294,7 +294,7 @@ const Home: React.FC = () => {
 
       <Grid container spacing={{ xs: 2, md: 3 }}>
         {/* Recent Job Postings */}
-        <Grid item xs={12} lg={8}>
+        <Grid size={{ xs: 12, lg: 8 }}>
           <Card elevation={2}>
             <CardContent>
               <Box sx={{ 
@@ -772,7 +772,7 @@ const Home: React.FC = () => {
         </Menu>
 
         {/* Recent Applications */}
-        <Grid item xs={12} lg={4}>
+        <Grid size={{ xs: 12, lg: 4 }}>
           <Card elevation={2}>
             <CardContent sx={{ p: { xs: 1.5, sm: 2 } }}>
               <Typography 

@@ -8,9 +8,6 @@ import {
   Avatar,
   Badge,
   Button,
-  FormControl,
-  Select,
-  MenuItem,
   Drawer,
   List,
   ListItem,
@@ -32,17 +29,12 @@ import {
   Person as PersonIcon,
   PostAdd as PostAddIcon,
   Work as WorkIcon,
-  Assignment as AssignmentIcon,
   Favorite as FavoriteIcon,
   Payment as PaymentIcon,
   BusinessCenter as BusinessCenterIcon,
   Settings as SettingsIcon,
   Logout as LogoutIcon,
   Business as BusinessIcon,
-  Home as HomeIcon,
-  Search as SearchIcon,
-  Support as SupportIcon,
-  Flag as FlagIcon,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
