@@ -57,10 +57,45 @@ A comprehensive React application for job posting, candidate management, and com
 - **TypeScript ESLint** - TypeScript-specific linting
 - **Vite** - Development server and build tool
 
-## Project Structure
+## Repository Structure
+
+The project is organized into the following folders:
 
 ```
-src/
+Bluestock-management/
+├── Source Code (Frontend)/        # React frontend application
+│   ├── src/                      # Source files
+│   ├── public/                   # Static assets
+│   ├── package.json              # Dependencies
+│   └── vite.config.ts            # Vite configuration
+│
+├── Source Code (Backend)/         # Backend server code
+│   └── README.md                 # Backend documentation
+│
+├── Source Code (RestAPI)/         # REST API client implementations
+│   ├── api/auth.ts               # Authentication API client
+│   └── api/company.ts            # Company API client
+│
+├── Database SQL File/            # Database schema and scripts
+│   └── company_db.sql            # PostgreSQL database schema
+│
+├── Technical Documentation/      # Technical documentation
+│   └── TECHNICAL_DOCUMENTATION.md
+│
+├── Daily Reports/                # Daily progress reports
+│   ├── September/                # September 2025 reports
+│   └── October/                  # October 2025 reports
+│
+├── README.md                     # Main project documentation
+├── SETUP.md                      # Setup instructions
+└── scripts/                      # Utility scripts
+    └── setup-database.js         # Database setup script
+```
+
+### Detailed Frontend Structure
+
+```
+Source Code (Frontend)/src/
 ├── components/              # Reusable UI components
 │   ├── FormStep.tsx        # Multi-step form wrapper
 │   ├── ProfileCard.tsx     # User/company profile display
